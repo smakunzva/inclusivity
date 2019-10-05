@@ -26,6 +26,12 @@ class ShoppingCartTest {
         addCartProducts(4, "Dove soap", 39.99);
 
         addCartProducts(5, "Dove soap", 39.99);
+
+        addCartProducts(6, "Dove soap", 39.99);
+
+        addCartProducts(7, "Dove soap", 39.99);
+
+        addCartProducts(8, "Dove soap", 39.99);
     }
 
     private void addCartProducts(int id, String name, double price) throws ParseException {
@@ -42,7 +48,7 @@ class ShoppingCartTest {
 
     @Test
     void addProduct() throws ParseException {
-        Assertions.assertEquals(5, shoppingCart.getProducts().size());
+        Assertions.assertEquals(8, shoppingCart.getProducts().size());
     }
 
     @Test
@@ -61,6 +67,6 @@ class ShoppingCartTest {
 
     @Test
     void getTotalPrice() throws ParseException {
-        Assertions.assertEquals(199.95, shoppingCart.getTotalPrice());
+        Assertions.assertEquals(319.92, shoppingCart.getTotalPrice());
     }
 }
