@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.text.ParseException;
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ShoppingCartTest {
 
     private Product product;
@@ -21,17 +19,9 @@ class ShoppingCartTest {
 
         addCartProducts(2, "Dove soap", 39.99);
 
-        addCartProducts(3, "Dove soap", 39.99);
+        addCartProducts(3, "Axe deo", 99.99);
 
-        addCartProducts(4, "Dove soap", 39.99);
-
-        addCartProducts(5, "Dove soap", 39.99);
-
-        addCartProducts(6, "Dove soap", 39.99);
-
-        addCartProducts(7, "Dove soap", 39.99);
-
-        addCartProducts(8, "Dove soap", 39.99);
+        addCartProducts(4, "Axe deo", 99.99);
     }
 
     private void addCartProducts(int id, String name, double price) throws ParseException {
@@ -48,7 +38,7 @@ class ShoppingCartTest {
 
     @Test
     void addProduct() throws ParseException {
-        Assertions.assertEquals(8, shoppingCart.getProducts().size());
+        Assertions.assertEquals(4, shoppingCart.getProducts().size());
     }
 
     @Test
@@ -61,12 +51,23 @@ class ShoppingCartTest {
 
         while (iterator.hasNext()) {
             Product product = (Product) iterator.next();
-            Assertions.assertEquals(39.99, product.getPrice());
+
+            if(product.getName().equalsIgnoreCase("Dove soap")) {
+                Assertions.assertEquals(39.99, product.getPrice());
+            } else {
+                Assertions.assertEquals(99.99, product.getPrice());
+            }
+
         }
     }
 
     @Test
     void getTotalPrice() throws ParseException {
-        Assertions.assertEquals(319.92, shoppingCart.getTotalPrice());
+        Assertions.assertEquals(314.96, shoppingCart.getTotalPrice());
+    }
+
+    @Test
+    void getTaxTotal() throws ParseException {
+        Assertions.assertEquals(34.99, shoppingCart.getTaxTotal());
     }
 }
